@@ -159,17 +159,6 @@
   .sleep #eyeL, .sleep #eyeR { opacity: 0; }
   .sleep #head { animation: none; transform: rotate(-6deg); }
 
-  /* Baby hamster */
-  #baby { transform: translateY(105px); transition: transform .7s var(--spring); }
-  .baby-up #baby { transform: none; }
-  .baby-up #babyBob { animation: babyBob 1.7s ease-in-out infinite; }
-  @keyframes babyBob { 50% { transform: translateY(5px); } }
-  #babyEyes { transform-origin: 525px 528px; }
-  .blink #babyEyes { animation: blink .2s ease; }
-  .baby-sleep { opacity: 0; }
-  .sleep .baby-sleep { opacity: 1; }
-  .sleep #babyEyes { opacity: 0; }
-
   /* Flowers */
   .flower { animation: flowerSway 3.6s ease-in-out infinite; }
   .flower:nth-child(even) { animation-delay: -1.6s; }
@@ -311,26 +300,6 @@
         </g>
       </g>
     </g>
-
-    <!-- baby hamster peeking over the hill -->
-    <g id="baby"><g id="babyBob">
-      <circle cx="493" cy="503" r="13" fill="#df9245"/><circle cx="493" cy="504" r="7.5" fill="#ffb3b0"/>
-      <circle cx="557" cy="503" r="13" fill="#df9245"/><circle cx="557" cy="504" r="7.5" fill="#ffb3b0"/>
-      <ellipse cx="525" cy="534" rx="42" ry="38" fill="url(#fur)"/>
-      <ellipse cx="525" cy="547" rx="29" ry="21" fill="url(#cream)"/>
-      <ellipse cx="495" cy="544" rx="8" ry="5" fill="#ff8f9e" opacity=".7"/>
-      <ellipse cx="555" cy="544" rx="8" ry="5" fill="#ff8f9e" opacity=".7"/>
-      <g id="babyEyes">
-        <circle cx="510" cy="528" r="8.5" fill="#2b1520"/><circle cx="513" cy="525" r="3" fill="#fff"/>
-        <circle cx="540" cy="528" r="8.5" fill="#2b1520"/><circle cx="543" cy="525" r="3" fill="#fff"/>
-      </g>
-      <g class="baby-sleep" fill="none" stroke="#2b1520" stroke-width="3.5" stroke-linecap="round">
-        <path d="M502 526q8 7 16 0"/><path d="M532 526q8 7 16 0"/>
-      </g>
-      <path fill="#f0728b" d="M520 537h10c2 0 3 2 1.500 3.500l-4 4c-1.500 1.500-3.500 1.500-5 0l-4-4c-1.500-1.500-.5-3.500 1.500-3.500Z"/>
-      <path fill="none" stroke="#6a2b3a" stroke-width="2.500" stroke-linecap="round" d="M525 545v2c0 5-8 6-10 1M525 547c0 5 8 6 10 1"/>
-      <circle cx="503" cy="559" r="10" fill="#f6bd76"/><circle cx="547" cy="559" r="10" fill="#f6bd76"/>
-    </g></g>
 
     <!-- flowers, rooted behind the hill -->
     <g>
@@ -543,12 +512,6 @@
       { transform: 'translateY(3px) scale(1.06,.94)', transformOrigin: '300px 560px', offset: .84 },
       { transform: 'translateY(0) scale(1,1)', transformOrigin: '300px 560px' }
     ], { duration: 560, easing: 'ease-in-out' });
-    document.getElementById('babyBob').animate([
-      { transform: 'translateY(0)' },
-      { transform: 'translateY(0)', offset: .25 },
-      { transform: 'translateY(-34px)', offset: .6 },
-      { transform: 'translateY(0)' }
-    ], { duration: 620, easing: 'ease-in-out' });
   }
 
   /* ---------- Things the hamster says ---------- */
@@ -605,7 +568,6 @@
 
   function finish() {
     finished = true; follow = true; ambient = !calm;
-    on('baby-up');
     restartNapTimer();
     setTimeout(function () { hint.classList.add('show'); }, 1800);
   }
